@@ -1,0 +1,14 @@
+#N p57prepulsarshuttle.rle
+#C https://conwaylife.com/wiki/Pre-pulsar_shuttle
+#C https://www.conwaylife.com/patterns/p57prepulsarshuttle.rle
+x = 33, y = 57, rule = B3/S23
+9b2o$5bob4o$3b3o2bobo2$5b2o$6bo2$5bo2b3o$5bo2b4o$5bo2bo2bo7bo$7b2o10b
+3o$8b2ob2o9bo$b2o6bob2o8bo$2b2o4b2obo9bo2bo$2b2o3bo4bo11bo3b2o$3bo2bob
+o2b2o11b2o2bobo$2bo4b3o10b2o3b3o2bo$2bob2ob2ob5o6bob2ob2o3b2o$3bo9bobo
+13bobo$7bo2bo4b3o5bo2bob2o2bo$8bo5bo3bo5bo6b2o$14b2ob2o2$3bo25bo$2bobo
+6b3o5b3o6bobo$3bo7bobo5bobo7bo$11b3o5b3o4$11b3o5b3o$3bo7bobo5bobo7bo$
+2bobo6b3o5b3o6bobo$3bo25bo2$14b2ob2o$2o6bo5bo3bo5bo$o2b2obo2bo5b3o4bo
+2bo$bobo13bobo9bo$2o3b2ob2obo6b5ob2ob2obo$2bo2b3o3b2o10b3o4bo$2bobo2b
+2o11b2o2bobo2bo$3b2o3bo11bo4bo3b2o$8bo2bo9bob2o4b2o$11bo8b2obo6b2o$10b
+o9b2ob2o$11b3o10b2o$13bo7bo2bo2bo$21b4o2bo$22b3o2bo2$26bo$26b2o2$22bob
+o2b3o$22b4obo$22b2o!

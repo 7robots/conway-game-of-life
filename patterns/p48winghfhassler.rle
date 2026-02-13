@@ -1,0 +1,8 @@
+#N p48winghfhassler.rle
+#C https://conwaylife.com/wiki/Period-48_honey_farm_hasslers
+#C https://www.conwaylife.com/patterns/p48winghfhassler.rle
+x = 30, y = 22, rule = B3/S23
+4b2o15bo$2obo2bob2o10bobo$2o2bo4bo10bobo$5bo13b2ob3o$6bobo16bo$19b2ob
+3o$19b2obo3$11b3o$2o8bo3bo$2o13bo4bo5bo$9bo4bo4b3o3b3o$9b2ob2o4bobobob
+obobo$11bo5b2obobobobob2o$17bob4ob4obo$17b5o3b5o3$21b2ob2o$20bobobobo$
+21bo3bo!

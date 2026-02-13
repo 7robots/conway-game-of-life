@@ -1,0 +1,8 @@
+#N p30brhassler.rle
+#C https://conwaylife.com/wiki/B-heptomino_hasslers
+#C https://www.conwaylife.com/patterns/p30brhassler.rle
+x = 43, y = 30, rule = B3/S23
+29b2o$29bo$15b2o10bobo$16bo10b2o$16bobo$17b2o$23b2o$22bobo$22bo2bo$23b
+2o$24bo$bo2b2o4b2o2bo16bo$o3b3o2b3o3bo15b4o$bo2b2o4b2o2bo17b4o$32bo2b
+o$32b4o$31b4o4b2o$31bo7bobo$41bo$17b3o21b2o$16bo3bo$15bo5bo$16bo3bo$17b
+3o$17b3o2$20b2o$20bo$21b3o$23bo!

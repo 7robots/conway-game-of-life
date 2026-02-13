@@ -1,0 +1,10 @@
+#N p450pishuttle.rle
+#C https://conwaylife.com/wiki/Pi-heptomino_hasslers
+#C https://www.conwaylife.com/patterns/p450pishuttle.rle
+x = 47, y = 58, rule = B3/S23
+38b3o$31bobo5bo$34bo4bo$31bo2bo3b3o$31bo2bo$24b2o7bo4b3o$24b2o4bob2o4b
+3o$30bo$38b3o$39bo$21b2o16bo$15bob2obobo15b3o$15b2obobo$19b2o$34bo$33b
+obo$34b2o3$9b2o$10bo$10bobo$11b2o4$2o$bo$bobo39b2o$2b2o39bobo$25b3o17b
+o$24bo3bo16b2o$23bo5bo$23bo5bo$23b3ob3o$34b2o$34bobo$36bo$36b2o3$11b2o
+$11bobo$12bo$26b2o$26bobob2o$6b3o15bobob2obo$7bo16b2o$7bo$6b3o$16bo$6b
+3o4b2obo4b2o$6b3o4bo7b2o$12bo2bo$6b3o3bo2bo$7bo4bo$7bo5bobo$6b3o!

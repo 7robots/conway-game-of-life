@@ -1,0 +1,11 @@
+#N p140lumpsofmuckhasslercappedgun.rle
+#C https://conwaylife.com/wiki/Lumps_of_muck_hasslers
+#C https://www.conwaylife.com/patterns/p140lumpsofmuckhasslercappedgun.rle
+x = 51, y = 43, rule = B3/S23
+9bo11b2o$8bobo9bo3bo$8bobo10bo6b2o$3b2o2b2ob2o10bobobo2bo$2bo4bo3bo12b
+o2b2o$o2bo4b3o13b2o3b3o$2obo2bobo15b5o2bo$3bob3o21b2o6b2o$3b2o23bo8bo
+$23bo2bobo6bobo$23bob3o7b2o$24b3o7$11bo9b3o$2o8b3o6b2o2bo$bo11bo5bo2b
+2o23b2o$bobo7b2o6b3o7b3o6b2o7bobo$2b2o23b2o2bo5bo11bo$27bo2b2o6b3o8b2o
+$27b3o9bo7$24b3o$14b2o7b3obo$13bobo6bobo2bo$13bo8bo23b2o$12b2o6b2o21b
+3obo$19bo2b5o15bobo2bob2o$19b3o3b2o13b3o4bo2bo$22b2o2bo12bo3bo4bo$21b
+o2bobobo10b2ob2o2b2o$21b2o6bo10bobo$26bo3bo9bobo$28b2o11bo!

@@ -1,0 +1,6 @@
+#N 37p3h1v0.rle
+#C https://conwaylife.com/wiki/37P3H1V0
+#C https://www.conwaylife.com/patterns/37p3h1v0.rle
+x = 25, y = 7, rule = B3/S23
+19bo$17b3ob3o$16b2o6bo$2bob2ob3o5bo2bo3b2o$b2ob2o4b2obo$o2bobo2bo3b2o
+$bo5bo3bo3bo!

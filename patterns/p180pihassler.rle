@@ -1,0 +1,11 @@
+#N p180pihassler.rle
+#C https://conwaylife.com/wiki/Pi-heptomino_hasslers
+#C https://www.conwaylife.com/patterns/p180pihassler.rle
+x = 71, y = 49, rule = B3/S23
+13b2o22b2o$13b2o22bo$35bobo$35b2o$12b3o$12b2obo2b2o$14b2o2b2o17b2o24b
+2o$14b2o21b2o23bobo$63bo2$12b2o$13bo53b3o$13bobo50bo3bo$14b2o42b3o5bo
+3bo$54bo2bo2bo6b3o$53bo6bo$53bo$31b2ob2o18b2o4bo$31bo3bo21bo2bo$32b3o
+23b3o6b3o$66bo3bo$66bo3bo$67b3o4$b3o$o3bo$o3bo$b3o6b3o23b3o$10bo2bo21b
+o3bo$10bo4b2o18b2ob2o$17bo$10bo6bo$b3o6bo2bo2bo$o3bo5b3o42b2o$o3bo50b
+obo$b3o53bo$57b2o2$7bo$6bobo23b2o21b2o$6b2o24b2o17b2o2b2o$51b2o2bob2o
+$56b3o$34b2o$33bobo$33bo22b2o$32b2o22b2o!

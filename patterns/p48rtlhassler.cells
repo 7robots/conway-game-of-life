@@ -1,0 +1,25 @@
+! p48rtlhassler.cells
+! https://conwaylife.com/wiki/Octomino_II_hasslers
+! https://conwaylife.com/wiki/Period-48_traffic_light_hasslers
+! https://conwaylife.com/wiki/Period-48_R-pentomino_hasslers
+! https://www.conwaylife.com/patterns/p48rtlhassler.cells
+.........OO.................
+..........O.................
+.OO.......O.O............OO.
+O.O........OO............O.O
+O.O.OO................OO.O.O
+.O.O.O...........OO...O.O.O.
+...O............OO......O...
+..OO.............O...O..OO..
+.OOO.................O..OOO.
+.OOO....................OOO.
+.OOO....................OOO.
+.OOO..O.................OOO.
+..OO..O...O.............OO..
+...O......OO............O...
+.O.O.O...OO...........O.O.O.
+O.O.OO................OO.O.O
+O.O............OO........O.O
+.OO............O.O.......OO.
+.................O..........
+.................OO.........

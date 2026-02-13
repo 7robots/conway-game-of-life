@@ -1,0 +1,12 @@
+#N p16plus8piorbital.rle
+#C https://conwaylife.com/wiki/Period-48_pi-heptomino_hasslers
+#C https://www.conwaylife.com/patterns/p16plus8piorbital.rle
+x = 50, y = 20, rule = B3/S23
+15b2o6b2o2b2o10bo$10bo4bo7bo3bobo8bobo$9bobo4b3ob2obo4bo9bobo2bo$6bo2b
+obo6bobobo14b2obobobo$5bobobob2o8bo14bo2bobobobo$4bobobobo2bo22b2obobo
+3bo$4bo3bobob2o21bo3bobobobobo$2bobobobobo3bo12b3o5b2ob4ob2obobo$bobob
+2ob4ob2o11bo3bo3bo5b2o4bobo$bobo4b2o5bo10b2ob2o2b2o4bo2b5ob2o$2ob5o2bo
+4b2o17bo5b2o4bobo$bobo4b2o5bo19b2ob4ob2obobo$bobob2ob4ob2o20bo3bobobob
+obo$2bobobobobo3bo21b2obobo3bo$4bo3bobob2o22bo2bobobobo$4bobobobo2bo
+14bo8b2obobobo$5bobobob2o14bobobo6bobo2bo$6bo2bobo9bo4bob2ob3o4bobo$9b
+obo8bobo3bo7bo4bo$10bo10b2o2b2o6b2o!

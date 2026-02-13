@@ -1,0 +1,8 @@
+#N periodagnosticlomhassler1atp30.rle
+#C https://conwaylife.com/wiki/Period-30_lumps_of_muck_hasslers
+#C https://www.conwaylife.com/patterns/periodagnosticlomhassler1atp30.rle
+x = 41, y = 26, rule = B3/S23
+9b2o$9bobo$4b2o6bo7b2o$2obo2bo2bo2bo7b2o$2o2b2o6bo$9bobo$9b2o2$25bo2b
+o4bo2bo$23b3o2b6o2b3o$25bo2bo4bo2bo$18b3o$18bo2b2o$18b2o2bo$20b3o$4bo
+2bo4bo2bo$2b3o2b6o2b3o$4bo2bo4bo2bo2$30b2o$29bobo$28bo6b2o2b2o$19b2o7b
+o2bo2bo2bob2o$19b2o7bo6b2o$29bobo$30b2o!

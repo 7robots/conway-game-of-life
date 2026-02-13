@@ -1,0 +1,10 @@
+#N p22biblockhassler.rle
+#C https://conwaylife.com/wiki/Bi-block_hassler
+#C https://www.conwaylife.com/patterns/p22biblockhassler.rle
+x = 34, y = 31, rule = B3/S23
+12b2o$12bo$9b2obo$4bo6bo$2obobobo$2obobobo$3bobobo$3bob2obo2bo$4bo5bo
+2b2ob2o5bo$5b5o3b2ob2o3b3o$20bo$7bo12b2o$6bobob2o12b2o$7bo3bo13bo$11b
+obo10bo$12b2o3b2o5b2o$16bo2bo$8b2o7bobo$7bo2bo6bo2bo4b3o$6bobobo7b2o5b
+o2bo$7bo2b2o13bo2bo3b2o$8b2o2bo13bobobo2bo$10b3o11bobobob2o$10bo2bo8b
+3o2bo$11b2obo6bo3b2o$13bob2o3bob3o$13bobobo2bo3bo$14b2ob4o$16bo$16bob
+o$17b2o!

@@ -1,0 +1,5 @@
+#N conduit1withcarrier.rle
+#C https://conwaylife.com/wiki/Aircraft_carrier
+#C https://www.conwaylife.com/patterns/conduit1withcarrier.rle
+x = 24, y = 13, rule = B3/S23
+2b2o$3bo$bo$b2o6$o3b2o15bo$2o2b2o15bo$b2o18b3o$2o21bo!

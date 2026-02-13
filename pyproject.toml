@@ -1,0 +1,9 @@
+[project]
+name = "conway-game-of-life"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "pygame>=2.6.1",
+    "pygame-gui>=0.6.14",
+]

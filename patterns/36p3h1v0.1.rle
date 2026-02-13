@@ -1,0 +1,6 @@
+#N 36p3h1v0.1.rle
+#C https://conwaylife.com/wiki/36P3H1V0.1
+#C https://www.conwaylife.com/patterns/36p3h1v0.1.rle
+x = 22, y = 9, rule = B3/S23
+14bo$13b4o$8bo3bo3b2ob2o$7b4o5bo2b2o$2bo3bo3bo7bo2bo$b4o4bo2bo$o3bo6b
+o$bobo2bo$5bo!

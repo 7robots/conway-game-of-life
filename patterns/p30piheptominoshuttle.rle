@@ -1,0 +1,9 @@
+#N p30piheptominoshuttle.rle
+#C https://conwaylife.com/wiki/Period-30_pi-heptomino_hasslers
+#C https://www.conwaylife.com/patterns/p30piheptominoshuttle.rle
+x = 39, y = 20, rule = B3/S23
+2o4b2o24bo4b2o$obo2bo2bo6b2o14bobo2bobo$2b4ob3o6bo13b2obo2bo$obo2bo2bo
+6bo15bobo2bobo$2o7bo5b2o10b2o2b2o4b2o$9b2o15b3o$9bo2bo$9bobo17bo$10b2o
+8b2o7bo$7b2ob2o8bobobo4bo$7b2ob2o10bobo4bo$10b2o8bobo6bo$9bobo8b2o7bo$
+9bo2bo$9b2o15b3o$2o7bo12b2o3b2o2b2o4b2o$obo2bo2bo14bo7bobo2bobo$2b4ob
+3o12bo7b2obo2bo$obo2bo2bo13b2o7bobo2bobo$2o4b2o24bo4b2o!

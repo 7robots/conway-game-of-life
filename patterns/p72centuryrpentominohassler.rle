@@ -1,0 +1,17 @@
+#N p72centuryrpentominohassler.rle
+#C https://conwaylife.com/wiki/Century_hasslers
+#C https://www.conwaylife.com/patterns/p72centuryrpentominohassler.rle
+x = 82, y = 82, rule = B3/S23
+44b2o$43bo2bo$46bo$46bo$43b2obo$43b2o2$38b2o$38b2o4b2o$44b2o8$34b2o9b
+2ob2o$33bo2bo8b2obo$33b2ob2o6bo3bo$35bobo6bobobob2o3b2o$37b3o3bo4bobo
+4b2o$38b2o3bo3b2obo$44b2o3bo$24b2o20b3o5b2obo$20b2o4b4o16bo8bobo$20b2o
+2b2ob3o26bo$24bo30b2o$55b2o$55b2o$20bo$20b3o$17bo5bo$17b6obo37b2o$22b
+obo37bobo$b4o12b2obo3b2o10b3o4b2o16bo2bo$o7b2o7b2o4bo12bobo4bob2o15b2o
+$o3b2o2b2o9b2o2bo11bo2bo7bo13b3o$bo2b2o15b2o12b2o7b3o12b2o12b2o$59b2o
+12b2o3$7b2o12b2o$7b2o12b2o12b3o7b2o12b2o15b2o2bo$19b3o13bo7bo2bo11bo2b
+2o9b2o2b2o3bo$18b2o15b2obo4bobo12bo4b2o7b2o7bo$17bo2bo16b2o4b3o10b2o3b
+ob2o12b4o$17bobo37bobo$18b2o37bob6o$58bo5bo$59b3o$61bo$25b2o$25b2o$25b
+2o30bo$25bo26b3ob2o2b2o$24bobo8bo16b4o4b2o$24bob2o5b3o20b2o$32bo3b2o$
+31bob2o3bo3b2o$25b2o4bobo4bo3b3o$25b2o3b2obobobo6bobo$33bo3bo6b2ob2o$
+33bob2o8bo2bo$32b2ob2o9b2o8$36b2o$36b2o4b2o$42b2o2$37b2o$35bob2o$35bo
+$35bo$35bo2bo$36b2o!

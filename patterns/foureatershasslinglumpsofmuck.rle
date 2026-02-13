@@ -1,0 +1,7 @@
+#N foureatershasslinglumpsofmuck.rle
+#O David Buckingham, 1977
+#C https://conwaylife.com/wiki/Four_eaters_hassling_lumps_of_muck
+#C https://www.conwaylife.com/patterns/foureatershasslinglumpsofmuck.rle
+x = 17, y = 17, rule = B3/S23
+2bo$2b3o$5bo9b2o$4b2o9bo$13bobo$8b2o3b2o$7bo$6bo$7bobo$7bo2$2b2o$bobo$
+bo9b2o$2o9bo$12b3o$14bo!

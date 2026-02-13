@@ -1,0 +1,6 @@
+#N 31p5phaseshifter.rle
+#O Dean Hickerson, 1997
+#C https://conwaylife.com/wiki/P5_phase_shifter
+#C https://www.conwaylife.com/patterns/31p5phaseshifter.rle
+x = 9, y = 12, rule = B3/S23
+3bobo$2bob2o$2bo3b2o$2ob2o3bo$bobob3o$o$4obo$5bo$2b2o$2bo$3bo$2b2o!

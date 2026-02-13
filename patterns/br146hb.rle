@@ -1,0 +1,7 @@
+#N br146hb.rle
+#C https://conwaylife.com/wiki/R126
+#C https://www.conwaylife.com/patterns/br146hb.rle
+x = 46, y = 37, rule = B3/S23
+19b2o$20bo$20bobo$21b2o7$38b2o$37bo2bo$14bo23b2o$15bo$15b2o$14b2o$14b
+o28b2o$43bobo$44b2o3$7bo13b3o$6bobo12bo$6bobo11b2o$7bo$2o$bo$bobo$2b2o
+3b2o$6bo2bo$5bo2bo$5b3o17b2o$2bo21bo2bo$2b4o19b2o$5bo$4bo$4b2o!

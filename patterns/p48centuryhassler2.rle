@@ -1,0 +1,10 @@
+#N p48centuryhassler2.rle
+#C https://conwaylife.com/wiki/Century_hasslers
+#C https://www.conwaylife.com/patterns/p48centuryhassler2.rle
+x = 37, y = 32, rule = B3/S23
+22b2o$22bo$21b2o2b3o$21bo3bob3o$21b2obo4bo$23bobo$11bo7bo4bob2o$11b3o
+5b3obo3bo$3bo10bo6b3o2b2o$2b2o9b2o11bo$bob2o20b2o$3o2bo$2bobobo$3bobo
+bo7b3o$4bo2b3o5bobo12bo$5b2obo5bo2bo11b2o$6b2o6b2o12bob2o$6bo20b3o2bo
+$29bobobo$30bobobo$31bo2b3o$10b2o20b2obo$10bo11b2o9b2o$9b2o2b3o6bo10b
+o$9bo3bob3o5b3o$9b2obo4bo7bo$11bobo$7bo4bob2o$7b3obo3bo$9b3o2b2o$14bo
+$13b2o!

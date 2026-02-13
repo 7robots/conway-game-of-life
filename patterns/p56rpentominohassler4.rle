@@ -1,0 +1,13 @@
+#N p56rpentominohassler4.rle
+#C https://conwaylife.com/wiki/Period-56_R-pentomino_hasslers
+#C https://www.conwaylife.com/patterns/p56rpentominohassler4.rle
+x = 55, y = 41, rule = B3/S23
+27b2o$26bobo$25bo2bob2obo$23b3obobobob3o$22bo4bo3bo4bo$22b5obobob5o$
+23bo2bobobobo2bo$14bo8bobo7bobo$14b3o10b2ob2o$17bo5b2o4bo4b2o$16b2o7b
+2o5b2o2$2b2o5bo9bo9bo$o2bo4bo9b2o$9bo2b2o3b2o$6b2obobo2bo4bo$o4b2o2b2o
+4bo3bo5b2o$bo2bobob2o16b2o$2b2o2bo18b2o$7bo4bo2bo7b3o5bo$6bo5b2o9bo7bo
+9b2o5bo$23bo5b3o7bo2bo4bo$28b2o18bo2b2o$27b2o16b2obobo2bo$28b2o5bo3bo
+4b2o2b2o4bo$35bo4bo2bobob2o$36b2o3b2o2bo$35b2o9bo4bo2bo$25bo9bo9bo5b2o
+2$21b2o5b2o7b2o$19b2o4bo4b2o5bo$23b2ob2o10b3o$19bobo7bobo8bo$19bo2bobo
+bobo2bo$18b5obobob5o$18bo4bo3bo4bo$19b3obobobob3o$21bob2obo2bo$26bobo$
+26b2o!

@@ -1,0 +1,10 @@
+#N 164p8.rle
+#O Arie Paap, 2019
+#C https://conwaylife.com/wiki/164P8
+#C https://www.conwaylife.com/patterns/164p8.rle
+x = 34, y = 20, rule = B3/S23
+16b2o$4bobobo2bo3bo2bob2o$3bob2ob4o2bob3obo$b3o10bo6b3o$o4b9ob6o2bo$b
+3o3bo5bobobo4bo$3bobo3b2o3bo3b2o$4bo3bo2bo4b2o8b5obo$11bo5b2o3bob2o$11b
+o8bo2bo9bo$11bo8bo2bo9bo$11bo5b2o3bob2o$4bo3bo2bo4b2o8b5obo$3bobo3b2o
+3bo3b2o$b3o3bo5bobobo4bo$o4b9ob6o2bo$b3o10bo6b3o$3bob2ob4o2bob3obo$4b
+obobo2bo3bo2bob2o$16b2o!

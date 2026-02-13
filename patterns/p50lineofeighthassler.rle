@@ -1,0 +1,9 @@
+#N p50lineofeighthassler.rle
+#C https://conwaylife.com/wiki/Traffic_light_hasslers
+#C https://www.conwaylife.com/patterns/p50lineofeighthassler.rle
+x = 41, y = 26, rule = B3/S23
+26bo$24b3o$23bo$23b2o10b2o$34bobo$33bo$32bob2o3bo$19b3o10bobo5bo$4b2o
+13bobo9b2ob3o3bo$4bobo12b3o8bo2bob2o2bo$7bo4b2o17b3o$bo3b2obo3b2o16bo
+2bob2o2bo$o5bobo22b2ob3o3bo$o3b3ob2o22bobo5bo$bo2b2obo2bo16b2o3bob2o3b
+o$7b3o17b2o4bo$bo2b2obo2bo8b3o12bobo$o3b3ob2o9bobo13b2o$o5bobo10b3o$bo
+3b2obo$7bo$4bobo$4b2o10b2o$17bo$14b3o$14bo!

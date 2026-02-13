@@ -1,0 +1,10 @@
+#N p80honeyfarmhassler3.rle
+#C https://conwaylife.com/wiki/Century_hasslers
+#C https://www.conwaylife.com/patterns/p80honeyfarmhassler3.rle
+x = 44, y = 39, rule = B3/S23
+20bo$19bobo$17b3obo$11b2o3bo4bob2o$11b2o3bobobobobo$17b2obobo7b2o$4b3o
+14bobo5bo2bo$7bo14bo6bobo$3bo3bo3bo2b2o14bob2o$2bobo2bo3b5o7b3o5b3o$o
+2bobo6b3o7bo3bo5b2o$o3bo16bo5bo$o9bo10bo5bo$b3o5bobo9bo5bo$10bo11bo3bo
+$23b3o14b3o$43bo$39bo3bo$38bobo2bo$36bo2bobo$36bo3bo$36bo$37b3o5$10bo
+3bo$9bobobobo$10b2ob2o$8b3o3b3o$7b2o7b2o$6b3obo3bob3o$5b2o3b2ob2o3b2o$
+5b3o2b2ob2o2b3o$6b2o9b2o$7b4o3b4o$9bo5bo$9bo5bo!

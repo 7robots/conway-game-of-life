@@ -1,0 +1,10 @@
+#N hiltonsp66.rle
+#O Caleb R. Hilton, 2025
+#C https://conwaylife.com/wiki/Hilton%27s_p66
+#C https://www.conwaylife.com/patterns/hiltonsp66.rle
+x = 45, y = 45, rule = B3/S23
+17b2o7b2o$16bo2bo5bo2bo$16bo11bo$9b2o5b2o9b2o5b2o$9b2o5b3o7b3o5b2o4$
+18bo7bo$3b2o12b2o7b2o12b2o$3b2o35b2o6$b4o35b4o$o2b2o4bo25bo4b2o2bo$o3b
+o3b2o25b2o3bo3bo$bo41bo6$bo41bo$o3bo3b2o25b2o3bo3bo$o2b2o4bo25bo4b2o2b
+o$b4o35b4o6$3b2o35b2o$3b2o12b2o7b2o12b2o$18bo7bo4$9b2o5b3o7b3o5b2o$9b
+2o5b2o9b2o5b2o$16bo11bo$16bo2bo5bo2bo$17b2o7b2o!

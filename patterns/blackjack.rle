@@ -1,0 +1,7 @@
+#N blackjack.rle
+#O iNoMed, 2025
+#C https://conwaylife.com/wiki/Blackjack
+#C https://www.conwaylife.com/patterns/blackjack.rle
+x = 25, y = 13, rule = B3/S23
+18b2o$5b2o11b2o$5b2o$bo13b2o$obo12bo$2o4b2o4b6o$6bobo4b4o$5bo2bo5bo8b
+2o$6b2o14bobo$6bo16bo$18b2o$5b2o11b2o$5b2o!

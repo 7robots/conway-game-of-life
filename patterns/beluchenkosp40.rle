@@ -1,0 +1,6 @@
+#N beluchenkosp40.rle
+#O Nicolay Beluchenko, 2009
+#C https://conwaylife.com/wiki/Beluchenko%27s_p40
+#C https://www.conwaylife.com/patterns/beluchenkosp40.rle
+x = 17, y = 14, rule = B3/S23
+2o8b2o$2o7bo$12bo$8b2obo$8b2o5$7b2o$5bob2o$4bo$7bo7b2o$5b2o8b2o!

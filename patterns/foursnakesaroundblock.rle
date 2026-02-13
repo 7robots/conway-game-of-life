@@ -1,0 +1,5 @@
+#N foursnakesaroundblock.rle
+#C https://conwaylife.com/wiki/Four_snakes_around_block
+#C https://www.conwaylife.com/patterns/foursnakesaroundblock.rle
+x = 8, y = 8, rule = B3/S23
+2b2obo$2bob2o$2o4b2o$bob2o2bo$o2b2obo$2o4b2o$2b2obo$2bob2o!

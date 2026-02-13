@@ -1,0 +1,7 @@
+#N november2022p24.rle
+#C https://conwaylife.com/wiki/Period-24_glider_gun
+#C https://www.conwaylife.com/patterns/november2022p24.rle
+x = 21, y = 23, rule = B3/S23
+7b2o$4bo$3bobo2b2o$bobob3o2bo$bo2b6o$4b2ob2o$3b6o2bo$2bo2b3obobo4b2o$
+3b2o2bobo5bo2bo$8bo6bobo2bo$4b2o10bo$17b2obo$13bo5bo$13b2o$13b3o$9b2o
+2b2o$11bobo2$4b2o$2o4b4o$2o2b2ob3o8bo$4bo14bo$17b3o!

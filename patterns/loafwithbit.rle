@@ -1,0 +1,5 @@
+#N loafwithbit.rle
+#C https://conwaylife.com/wiki/Loaf_with_bit
+#C https://www.conwaylife.com/patterns/loafwithbit.rle
+x = 4, y = 4, rule = B3/S23
+b3o$o2bo$bobo$2bo!

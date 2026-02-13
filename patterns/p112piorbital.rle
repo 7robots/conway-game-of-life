@@ -1,0 +1,22 @@
+#N p112piorbital.rle
+#C https://conwaylife.com/wiki/Pi-heptomino_hasslers
+#C https://www.conwaylife.com/patterns/p112piorbital.rle
+x = 81, y = 81, rule = B3/S23
+34b2o6b3o$34bobo4bo2bo14b2o$35b2o3bo2b2o14bo$31b2o7b3o5bo8bobo$30bobo
+8bo5b3o7b2o$30bo14b2o2bo3b2o$29b2o14bo2bo4bobo$45b3o6b2o$22b2o5b2o3bo$
+22b2o5b2o3b3o$37bo$36b2o$22bo7bo$21b3o5b3o$21bo9bo8bo2b2o$22b3o3b3o12b
+3o$43b2o$25bobo15bo3$bo$b3o18b2o5b2o35b2o$4bo17b2o5b2o20b2o5b2o5bob2o
+2b2o$3b2o46bo6b2o5bobo3b2o$49bobo13bo$6b2o41b2o12bo$5bobo30b3o$5b2o32b
+o23bo$22bo16bo25bo$22b3o13b3o17b2o5bobo3b2obo$25bo8b2o22b2o5bob2o2b2ob
+3o$4b2o18b2o11bobo26b2o9bo$3b2obo26bo42b2o$4bo2bo25bo3bo$5bobo23bo7bo
+31b2o6b2o$5b3o21b2o4bo4b2o29bo6bobo$3o26bo4bobo4bo27bobo6b2o$obo12bo
+13bo3bo3bo3bo27b2o$o2bo11bo14b2obo3bob2o20b2o$bob2o12b2o13bo5bo22bobo$
+2b2o13bobo41bobo13b2o$17bobo42b2o12b2obo$18b2o45bo11bo2bo$10b2o53bo12b
+obo$b2o6bobo66b3o$obo6bo63b3o$2o6b2o63bobo$73bo2bo$3b2o69bob2o$3bo9b2o
+40b2o18b2o$4b3ob2o2b2obo5b2o32bo$6bob2o3bobo5b2o17b3o13b3o$15bo25bo16b
+o$17bo23bo32b2o$40b3o30bobo$17bo12b2o41b2o$15bo13bobo$8b2o3bobo5b2o6bo
+46b2o$8b2o2b2obo5b2o5b2o20b2o5b2o17bo$13b2o35b2o5b2o18b3o$79bo3$37bo
+15bobo$36b2o$35b3o12b3o3b3o$36b2o2bo8bo9bo$49b3o5b3o$50bo7bo$43b2o$43b
+o$44b3o3b2o5b2o$46bo3b2o5b2o$25b2o6b3o$25bobo4bo2bo14b2o$26b2o3bo2b2o
+14bo$22b2o7b3o5bo8bobo$21bobo8bo5b3o7b2o$21bo14b2o2bo3b2o$20b2o14bo2bo
+4bobo$36b3o6b2o!

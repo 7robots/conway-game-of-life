@@ -1,0 +1,10 @@
+#N fourtwinbeesshuttlesflippingtwoships.rle
+#O siffrin normal, 2025
+#C https://conwaylife.com/wiki/Four_twin_bees_shuttles_flipping_two_ships
+#C https://www.conwaylife.com/patterns/fourtwinbeesshuttlesflippingtwoships.rle
+x = 61, y = 61, rule = B3/S23
+26b2o$26b2o9$27bo5bo$26b3o3b3o$26bob2ob2obo$28b2ob2o$28b2ob2o$28b2ob2o
+11$2o9b2o15b3o17b2o$2o8b2o16b3o18b2o$11b5o10b2o17b5o$12b4o10b2o17b4o$
+26b2o5b2o$12b4o17b2o10b4o$11b5o17b2o10b5o$10b2o18b3o16b2o8b2o$11b2o17b
+3o15b2o9b2o11$28b2ob2o$28b2ob2o$28b2ob2o$26bob2ob2obo$26b3o3b3o$27bo5b
+o9$33b2o$33b2o!

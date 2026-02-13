@@ -1,0 +1,8 @@
+#N p60lumpsofmuckhassler4.rle
+#C https://conwaylife.com/wiki/Period-60_lumps_of_muck_hasslers
+#C https://www.conwaylife.com/patterns/p60lumpsofmuckhassler4.rle
+x = 33, y = 41, rule = B3/S23
+14bo$13b3o$12bobobo$12bobobo$13b3o$14bo3$14bo$13b3o$12bobobo$b3o8bobo
+bo$o3bo8b3o$o3bo9bo$b3o2$12b2o$8b3ob3o$8b2obob2o$b3o6b2ob2o$o3bo6bobo
+11b6o$o3bo19bo6bo$b3o16b2obo8bo$24bo6bo$25b6o2$13b3o$11b2o2bo4b2o$11b
+o2b2o4b2o$11b3o9$5bo4bo$3b2ob4ob2o$5bo4bo!

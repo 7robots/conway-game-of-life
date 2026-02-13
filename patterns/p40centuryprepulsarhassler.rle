@@ -1,0 +1,9 @@
+#N p40centuryprepulsarhassler.rle
+#C https://conwaylife.com/wiki/Century_hasslers
+#C https://www.conwaylife.com/patterns/p40centuryprepulsarhassler.rle
+x = 33, y = 29, rule = B3/S23
+7bo17bo$3b2o2b2ob3o7b3ob2o2b2o$3b2o4b4o7b4o4b2o$7b2o15b2o4$12b3o3b3o$
+12bobo3bobo$12bo2bobo2bo$14b2ob2o2$10bo11bo$12bobo3bobo$15bobo$3b3o6b
+2obobob2o6b3o$3b3o7b2o3b2o7b3o$3b3o7bo5bo7b3o$3o27b3o$3o27b3o$3o6b2o11b
+2o6b3o$7b3ob2ob2ob2ob2ob3o$6bo8bobo8bo$7b5obobobobob5o$12b2obobob2o$9b
+2o5bo5b2o$9bo13bo$10bo11bo$9b2o11b2o!

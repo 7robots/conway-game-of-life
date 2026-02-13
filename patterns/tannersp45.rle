@@ -1,0 +1,8 @@
+#N tannersp45.rle
+#C https://conwaylife.com/wiki/Period-45_pi-heptomino_hasslers
+#C https://www.conwaylife.com/patterns/tannersp45.rle
+x = 25, y = 38, rule = B3/S23
+23b2o$23bo$21bobo$21b2o$13b3o$3b2o7bo3bo$3b2o7b2ob2o3$2b2o$3bo8b3o$3o
+$o12b2o$18b3o$18bobo$18b3o$18b3o$18b3o$18b3o$18bobo$18b3o$b3o$o3bo$o3b
+o4bo$b3o3b2obo$7bo2b2o$11bo4b2o$9bobo4b2o$11bo$b3o$o3bo$o3bo3b2o$b3o3$
+7bo$6bobo$6b2o!

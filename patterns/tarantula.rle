@@ -1,0 +1,7 @@
+#N tarantula.rle
+#O Frank Everdij, 2025
+#C https://conwaylife.com/wiki/Tarantula
+#C https://www.conwaylife.com/patterns/tarantula.rle
+x = 25, y = 9, rule = B3/S23
+4bo15bo$3b3o13b3o$9b3ob3o$bo6bobo3bobo6bo$obobo3bo7bo3bobobo$3bob2o2b
+3ob3o2b2obo$o23bo$2o4b2o9b2o4b2o$2o4b2o9b2o4b2o!

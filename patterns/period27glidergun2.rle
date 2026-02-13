@@ -1,0 +1,15 @@
+#N period27glidergun2.rle
+#C https://conwaylife.com/wiki/Period-27_glider_gun
+#C https://www.conwaylife.com/patterns/period27glidergun2.rle
+x = 46, y = 43, rule = B3/S23
+21bo3b3o3bo10bo$20bobo7bobo8bobo$21bo3bobo3bobo6bo2bo$32bo$25b4o12bob
+o$20bobobo4bo13b2o$20bo3bob2obobobo9b2o$20bobobob2obo3bo5b2ob2o$24bo4b
+obobo5bo$25b4o8bobobo$21bo15b2ob2o$20bobo3bobo3bo7bo2bo$21bobo7bobo6b
+2ob3o$22bo3b3o3bo5bobo$3b2o30bo2bo$3bo4bo25bob2obo4bo$5bobobo24b2o6b3o
+$4b3o2bo24b2o2bo2bo$b2o6bobo11bo11bo2bo2b4o$bob4o3b2o3b2o7bo10bo2bo2b
+o2bo$7bo6bo2bo5bo4b3o9bob2o$5b2o8bobo10bobo8b2o$2b2obo9b3o4bo5bo2bo6b
+o$bo2bo2bo2bo10bo7b2o3b2o3b4obo$b4o2bo2bo11bo11bobo6b2o$4bo2bo2b2o24b
+o2b3o$b3o6b2o24bobobo$bo4bob2obo25bo4bo$7bo2bo30b2o$5bobo5bo3b3o3bo$3o
+b2o6bobo7bobo$2bo2bo7bo3bobo3bobo$4b2ob2o15bo$4bobobo8b4o$6bo5bobobo4b
+o$2b2ob2o5bo3bob2obobobo$b2o9bobobob2obo3bo$b2o13bo4bobobo$2bobo12b4o
+$13bo$2bo2bo6bobo3bobo3bo$2bobo8bobo7bobo$3bo10bo3b3o3bo!

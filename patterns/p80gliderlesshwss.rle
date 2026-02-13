@@ -1,0 +1,9 @@
+#N p80gliderlesshwss.rle
+#O iNoMed, 2025
+#C https://conwaylife.com/wiki/P80_gliderless_HWSS_gun
+#C https://www.conwaylife.com/patterns/p80gliderlesshwss.rle
+x = 25, y = 44, rule = B3/S23
+10b3o$13bo$9bo3bo$8bobo2bo$6bo2bobo$6bo3bo$6bo16b2o$7b3o13bo$21bobo$2o
+2bo16b2o$o2b2o$b5o8bo$13bob2o$13bobo$b5o8bo$o2b2o$2o2bo4$6b2o$7bo$7bo
+bo$8b2o$4b2o$5bo$5bobo$6b2o2$9b2o$9b2o5$4bo2bobo$2b2obob3o$3bo6bo$2b2o
+5bo$15b2o$3bo5b2o3bobo$2bo6bo5bo$3b3obob2o$3bobo2bo!

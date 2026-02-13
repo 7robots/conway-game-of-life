@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conway's Game of Life</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: #8ecae6;
+    }
+
+    #stats {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    #stats span { color: #8ecae6; font-weight: 600; }
+
+    #grid-container {
+      border: 1px solid #222;
+      background: #111;
+      cursor: crosshair;
+      margin-bottom: 16px;
+    }
+
+    canvas { display: block; }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    button {
+      background: #1a1a2e;
+      color: #8ecae6;
+      border: 1px solid #2a2a4a;
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+      letter-spacing: 0.05em;
+    }
+
+    button:hover { background: #2a2a4e; border-color: #8ecae6; }
+    button.active { background: #8ecae6; color: #0a0a0a; font-weight: 600; }
+
+    .speed-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    input[type="range"] {
+      width: 140px;
+      accent-color: #8ecae6;
+    }
+
+    .presets {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .presets button {
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      background: #111;
+      border-color: #333;
+    }
+
+    .presets button:hover { border-color: #8ecae6; }
+
+    .info {
+      margin-top: 16px;
+      font-size: 0.75rem;
+      color: #555;
+      text-align: center;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Conway's Game of Life</h1>
+<div id="stats">
+  Generation: <span id="gen-count">0</span> &nbsp;|&nbsp;
+  Population: <span id="pop-count">0</span> &nbsp;|&nbsp;
+  Status: <span id="status">Paused</span>
+</div>
+
+<div id="grid-container">
+  <canvas id="grid"></canvas>
+</div>
+
+<div class="controls">
+  <button id="btn-start">▶ Start</button>
+  <button id="btn-step">⏭ Step</button>
+  <button id="btn-clear">✕ Clear</button>
+  <button id="btn-random">⚄ Random</button>
+</div>
+
+<div class="speed-control">
+  <label for="speed">Speed:</label>
+  <input type="range" id="speed" min="10" max="500" value="100" step="10">
+  <span id="speed-val">100ms</span>
+</div>
+
+<div class="presets">
+  <button data-preset="glider">Glider</button>
+  <button data-preset="blinker">Blinker</button>
+  <button data-preset="toad">Toad</button>
+  <button data-preset="beacon">Beacon</button>
+  <button data-preset="pulsar">Pulsar</button>
+  <button data-preset="glider-gun">Gosper Glider Gun</button>
+</div>
+
+<div class="info">
+  Click cells to toggle them alive/dead. Use presets to place common patterns.
+  Start the simulation and watch patterns evolve.
+</div>
+
+<script>
+// ── Configuration ──
+const ROWS = 50;
+const COLS = 50;
+const CELL = 12;
+const ALIVE_COLOR = '#8ecae6';
+const DEAD_COLOR = '#111';
+const GRID_COLOR = '#1a1a1a';
+
+// ── State ──
+let grid = makeGrid();
+let running = false;
+let generation = 0;
+let speed = 100;
+let intervalId = null;
+let isDragging = false;
+let dragValue = null;
+
+// ── Canvas Setup ──
+const canvas = document.getElementById('grid');
+const ctx = canvas.getContext('2d');
+canvas.width = COLS * CELL;
+canvas.height = ROWS * CELL;
+
+// ── DOM refs ──
+const btnStart = document.getElementById('btn-start');
+const btnStep = document.getElementById('btn-step');
+const btnClear = document.getElementById('btn-clear');
+const btnRandom = document.getElementById('btn-random');
+const speedSlider = document.getElementById('speed');
+const speedVal = document.getElementById('speed-val');
+const genCount = document.getElementById('gen-count');
+const popCount = document.getElementById('pop-count');
+const statusEl = document.getElementById('status');
+
+// ── Grid helpers ──
+function makeGrid() {
+  return Array.from({ length: ROWS }, () => new Uint8Array(COLS));
+}
+
+function countNeighbors(g, r, c) {
+  let n = 0;
+  for (let dr = -1; dr <= 1; dr++) {
+    for (let dc = -1; dc <= 1; dc++) {
+      if (dr === 0 && dc === 0) continue;
+      const nr = r + dr, nc = c + dc;
+      if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {
+        n += g[nr][nc];
+      }
+    }
+  }
+  return n;
+}
+
+function nextGeneration() {
+  const next = makeGrid();
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      const nb = countNeighbors(grid, r, c);
+      if (grid[r][c]) {
+        next[r][c] = (nb === 2 || nb === 3) ? 1 : 0;
+      } else {
+        next[r][c] = (nb === 3) ? 1 : 0;
+      }
+    }
+  }
+  grid = next;
+  generation++;
+}
+
+function population() {
+  let p = 0;
+  for (let r = 0; r < ROWS; r++)
+    for (let c = 0; c < COLS; c++)
+      p += grid[r][c];
+  return p;
+}
+
+// ── Rendering ──
+function draw() {
+  ctx.fillStyle = DEAD_COLOR;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Draw alive cells
+  ctx.fillStyle = ALIVE_COLOR;
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      if (grid[r][c]) {
+        ctx.fillRect(c * CELL + 1, r * CELL + 1, CELL - 1, CELL - 1);
+      }
+    }
+  }
+
+  // Draw grid lines
+  ctx.strokeStyle = GRID_COLOR;
+  ctx.lineWidth = 0.5;
+  for (let r = 0; r <= ROWS; r++) {
+    ctx.beginPath();
+    ctx.moveTo(0, r * CELL);
+    ctx.lineTo(canvas.width, r * CELL);
+    ctx.stroke();
+  }
+  for (let c = 0; c <= COLS; c++) {
+    ctx.beginPath();
+    ctx.moveTo(c * CELL, 0);
+    ctx.lineTo(c * CELL, canvas.height);
+    ctx.stroke();
+  }
+
+  // Update stats
+  genCount.textContent = generation;
+  popCount.textContent = population();
+  statusEl.textContent = running ? 'Running' : 'Paused';
+}
+
+// ── Simulation control ──
+function start() {
+  if (running) return;
+  running = true;
+  btnStart.textContent = '⏸ Pause';
+  btnStart.classList.add('active');
+  intervalId = setInterval(() => { nextGeneration(); draw(); }, speed);
+}
+
+function stop() {
+  running = false;
+  btnStart.textContent = '▶ Start';
+  btnStart.classList.remove('active');
+  if (intervalId) { clearInterval(intervalId); intervalId = null; }
+}
+
+function toggleRun() { running ? stop() : start(); }
+
+function step() {
+  if (running) stop();
+  nextGeneration();
+  draw();
+}
+
+function clear() {
+  stop();
+  grid = makeGrid();
+  generation = 0;
+  draw();
+}
+
+function randomize() {
+  stop();
+  grid = Array.from({ length: ROWS }, () =>
+    Uint8Array.from({ length: COLS }, () => Math.random() < 0.3 ? 1 : 0)
+  );
+  generation = 0;
+  draw();
+}
+
+function updateSpeed() {
+  speed = 510 - parseInt(speedSlider.value); // invert so right = faster
+  speedVal.textContent = speed + 'ms';
+  if (running) {
+    clearInterval(intervalId);
+    intervalId = setInterval(() => { nextGeneration(); draw(); }, speed);
+  }
+}
+
+// ── Mouse interaction ──
+function getCellFromEvent(e) {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const c = Math.floor(x / CELL);
+  const r = Math.floor(y / CELL);
+  if (r >= 0 && r < ROWS && c >= 0 && c < COLS) return { r, c };
+  return null;
+}
+
+canvas.addEventListener('mousedown', (e) => {
+  if (running) return;
+  const cell = getCellFromEvent(e);
+  if (cell) {
+    isDragging = true;
+    dragValue = grid[cell.r][cell.c] ? 0 : 1;
+    grid[cell.r][cell.c] = dragValue;
+    draw();
+  }
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  const cell = getCellFromEvent(e);
+  if (cell) {
+    grid[cell.r][cell.c] = dragValue;
+    draw();
+  }
+});
+
+window.addEventListener('mouseup', () => { isDragging = false; });
+
+// ── Presets ──
+const PRESETS = {
+  glider: { pattern: [[0,1],[1,2],[2,0],[2,1],[2,2]], offset: [2, 2] },
+  blinker: { pattern: [[0,0],[1,0],[2,0]], offset: [24, 24] },
+  toad: { pattern: [[0,1],[0,2],[0,3],[1,0],[1,1],[1,2]], offset: [24, 24] },
+  beacon: { pattern: [[0,0],[0,1],[1,0],[1,1],[2,2],[2,3],[3,2],[3,3]], offset: [23, 23] },
+  pulsar: {
+    pattern: (() => {
+      const p = [];
+      const rows = [
+        [0, [2,3,4,8,9,10]],
+        [2, [0,5,7,12]],
+        [3, [0,5,7,12]],
+        [4, [0,5,7,12]],
+        [5, [2,3,4,8,9,10]],
+        [7, [2,3,4,8,9,10]],
+        [8, [0,5,7,12]],
+        [9, [0,5,7,12]],
+        [10, [0,5,7,12]],
+        [12, [2,3,4,8,9,10]],
+      ];
+      rows.forEach(([r, cols]) => cols.forEach(c => p.push([r, c])));
+      return p;
+    })(),
+    offset: [18, 18]
+  },
+  'glider-gun': {
+    pattern: [
+      [0,24],[1,22],[1,24],[2,12],[2,13],[2,20],[2,21],[2,34],[2,35],
+      [3,11],[3,15],[3,20],[3,21],[3,34],[3,35],[4,0],[4,1],[4,10],
+      [4,16],[4,20],[4,21],[5,0],[5,1],[5,10],[5,14],[5,16],[5,17],
+      [5,22],[5,24],[6,10],[6,16],[6,24],[7,11],[7,15],[8,12],[8,13]
+    ],
+    offset: [10, 2]
+  }
+};
+
+function placePreset(name) {
+  if (running) stop();
+  const preset = PRESETS[name];
+  if (!preset) return;
+  grid = makeGrid();
+  generation = 0;
+  const [or, oc] = preset.offset;
+  preset.pattern.forEach(([r, c]) => {
+    const nr = r + or, nc = c + oc;
+    if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {
+      grid[nr][nc] = 1;
+    }
+  });
+  draw();
+}
+
+// ── Event Listeners ──
+btnStart.addEventListener('click', toggleRun);
+btnStep.addEventListener('click', step);
+btnClear.addEventListener('click', clear);
+btnRandom.addEventListener('click', randomize);
+speedSlider.addEventListener('input', updateSpeed);
+
+document.querySelectorAll('[data-preset]').forEach(btn => {
+  btn.addEventListener('click', () => placePreset(btn.dataset.preset));
+});
+
+// ── Keyboard shortcuts ──
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') { e.preventDefault(); toggleRun(); }
+  if (e.key === 'n' || e.key === 'N') step();
+  if (e.key === 'c' || e.key === 'C') clear();
+  if (e.key === 'r' || e.key === 'R') randomize();
+});
+
+// ── Initial draw ──
+draw();
+</script>
+</body>
+</html>

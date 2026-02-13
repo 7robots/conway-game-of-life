@@ -1,0 +1,9 @@
+#N smallerp28gun.rle
+#C https://conwaylife.com/wiki/P4-assisted_period-28_glider_gun
+#C https://www.conwaylife.com/patterns/smallerp28gun.rle
+x = 31, y = 23, rule = B3/S23
+15b2o$3bo11b2o$3b3o21b2o$6bo20bobo$5bo18bo4bo$5bo3bo5bo8bob2ob2o$9bo5b
+2o7bo3bo$6bobo5bo2bo6bobobo$6b2o8b3o4b2ob2o$6b2o6b3o7b2o$4bo2bo6b3o6bo
+3b3o$bo2bob2o6bobo6b2obo2bo$b3o3bo6b3o6bo2bo$5b2o7b3o6b2o$3b2ob2o4b3o
+8b2o$2bobobo6bo2bo5bobo$2bo3bo7b2o5bo$2ob2obo8bo5bo3bo$bo4bo18bo$bobo
+7b2o11bo$2b2o8bo7bo4b3o$9b3o9bo5bo$9bo9b3o!

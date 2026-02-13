@@ -1,0 +1,5 @@
+#N boattoqueenbee.rle
+#C https://conwaylife.com/wiki/Ship
+#C https://www.conwaylife.com/patterns/boattoqueenbee.rle
+x = 13, y = 8, rule = B3/S23
+11bo$10bo$10b3o3$2o$obo$b2o!

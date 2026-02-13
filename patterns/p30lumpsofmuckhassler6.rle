@@ -1,0 +1,8 @@
+#N p30lumpsofmuckhassler6.rle
+#C https://conwaylife.com/wiki/Period-30_lumps_of_muck_hasslers
+#C https://www.conwaylife.com/patterns/p30lumpsofmuckhassler6.rle
+x = 31, y = 21, rule = B3/S23
+bo$o2bo$o2bo16b2o6b2o$2bo4b2o10bo2bo4bo2bo$7bo3bo7bo2bo4bo2bo$2bo5b2o
+9bo2bo4bo2bo$o2bo5bo10b2o6b2o$o2bo$bo3$5bo11bo$4bob2o7b2obo$2b3obob3ob
+3obob3o$bo6bobobobo6bo$2b5obobobobob5o$7b2obobob2o$4b2o5bo5b2o$4bo13bo
+$5bo11bo$4b2o11b2o!

@@ -1,0 +1,7 @@
+#N gabrielsp138hasslingblinker.rle
+#C https://conwaylife.com/wiki/Gabriel%27s_p138
+#C https://www.conwaylife.com/patterns/gabrielsp138hasslingblinker.rle
+x = 50, y = 27, rule = B3/S23
+3$10b3o$9bo2bo$9bo2bo24b3o$9b2o$41b2o$31bo9bobo$31bo11bo$19b3o9bo9bob
+2o$19bo2bo18b2o2bo$22bo21b2o$2b3o15b3o14b3o$2bo$2bo2bo$3b3o4$14b2o$12b
+o2bo$12bo2bo$12b3o!

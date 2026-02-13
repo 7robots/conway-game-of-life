@@ -1,0 +1,8 @@
+#N p30piheptominohassler4.rle
+#C https://conwaylife.com/wiki/Period-30_pi-heptomino_hasslers
+#C https://www.conwaylife.com/patterns/p30piheptominohassler4.rle
+x = 47, y = 25, rule = B3/S23
+15bo6b2o$15b3o6bo$18bo2bo$17b2o3b2o5$2b2o6b2o8b2o$bo2bo4bo2bo6bobo$6o
+2b6o5bo$bo2bo4bo2bo6bobo$2b2o6b2o8b2o3b2o8b2o6b2o$25bobo6bo2bo4bo2bo$
+27bo5b6o2b6o$25bobo6bo2bo4bo2bo$25b2o8b2o6b2o5$23b2o3b2o$25bo2bo$22bo
+6b3o$23b2o6bo!

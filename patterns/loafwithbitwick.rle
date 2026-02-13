@@ -1,0 +1,10 @@
+#N loafwithbitwick.rle
+#C https://conwaylife.com/wiki/Loaf_with_bit
+#C https://www.conwaylife.com/patterns/loafwithbitwick.rle
+x = 49, y = 49, rule = B3/S23
+46b3o$45bo2bo$46bobo$43b3obo$42bo2bo$43bobo$40b3obo$39bo2bo$40bobo$37b
+3obo$36bo2bo$37bobo$34b3obo$33bo2bo$34bobo$31b3obo$30bo2bo$31bobo$28b
+3obo$27bo2bo$28bobo$25b3obo$24bo2bo$25bobo$22b3obo$21bo2bo$22bobo$19b
+3obo$18bo2bo$19bobo$16b3obo$15bo2bo$16bobo$13b3obo$12bo2bo$13bobo$10b
+3obo$9bo2bo$10bobo$7b3obo$6bo2bo$7bobo$4b3obo$3bo2bo$4bobo$b3obo$o2bo
+$bobo$2bo!
