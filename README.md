@@ -23,12 +23,15 @@ A visual implementation of Conway's Game of Life built with Pygame, featuring ag
 - Python 3.13+
 - [uv](https://docs.astral.sh/uv/) package manager
 
-### Install and Run
+### Clone and Run
 
 ```bash
-uv sync
-uv run python conway.py
+git clone https://github.com/7robots/conway-game-of-life.git
+cd conway-game-of-life
+./run.sh
 ```
+
+This will install dependencies and launch the game. You can also run manually with `uv run python conway.py`.
 
 ## Controls
 
