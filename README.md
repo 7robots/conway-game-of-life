@@ -4,6 +4,8 @@ A visual implementation of Conway's Game of Life built with Pygame, featuring ag
 
 ![Python 3.13+](https://img.shields.io/badge/python-3.13%2B-blue)
 
+![Conway's Game of Life screenshot](Conway-Screenshot.png)
+
 ## Features
 
 - **50x50 grid** with click/drag cell editing when paused
