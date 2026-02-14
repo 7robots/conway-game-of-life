@@ -24,7 +24,7 @@ uv run python conway.py
 - `conway.py` -- Main application. Contains grid logic (`make_grid`, `next_generation`, `count_neighbors`), presets, UI controls (pygame_gui buttons/slider), and the game loop. All state is local to `main()`.
 - `pattern_db.py` -- Parses `.cells` files, computes SHA-256 hashes for all 8 orientations of each pattern, builds `hash_to_name` lookup dict. `PatternDatabase` class loads on init.
 - `pattern_scanner.py` -- `PatternScanner.scan()` runs BFS flood fill (8-connectivity) to extract connected components, normalizes each to origin, hashes, and does dict lookup. Tracks `discovered: dict[name, generation]`.
-- `pattern_ui.py` -- `PatternSidebar` renders right-side discovery panel. `ToastNotification` renders fade-in/out popups anchored to bottom of sidebar.
+- `pattern_ui.py` -- `PatternSidebar` renders right-side scrollable discovery panel with mouse wheel support and scrollbar. `PatternPopup` shows clickable pattern detail window with cell visualization and LifeWiki hyperlink. `ToastNotification` renders fade-in/out popups anchored to bottom of sidebar.
 
 ### Key constants (conway.py)
 
@@ -40,6 +40,7 @@ uv run python conway.py
 3. Scanner uses BFS flood fill -> normalize -> hash -> O(1) dict lookup
 4. New discoveries trigger `toasts.add()` for popup notifications
 5. Scanner resets on Clear, Random, and Preset actions
+6. Clicking a pattern name in the sidebar opens `PatternPopup` with cell visualization and LifeWiki link
 
 ### Data directory
 
