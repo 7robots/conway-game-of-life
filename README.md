@@ -13,7 +13,8 @@ A visual implementation of Conway's Game of Life built with Pygame, featuring ag
 - **Death trails** -- recently died cells leave a fading ember glow
 - **Built-in presets** -- Glider, Blinker, Toad, Beacon, Pulsar, Gosper Gun
 - **Pattern recognition** -- automatically identifies known patterns from a database of 914 small patterns (from 3,557 LifeWiki `.cells` files), matching all 8 orientations (rotations + reflections)
-- **Discovery sidebar** -- right panel tracks unique pattern types found during a session
+- **Scrollable discovery sidebar** -- right panel tracks unique pattern types found during a session, with mouse wheel scrolling and a scrollbar when the list overflows
+- **Pattern detail popup** -- click any discovered pattern name to see a centered overlay visualizing its cell layout
 - **Toast notifications** -- brief popups when a new pattern type is first discovered
 
 ## Getting Started
@@ -42,6 +43,9 @@ This will install dependencies and launch the game. You can also run manually wi
 | **C** | Clear grid |
 | **R** | Randomize grid |
 | **Click / Drag** | Toggle cells (when paused) |
+| **Click pattern name** | Open pattern detail popup |
+| **Scroll wheel** (sidebar) | Scroll discovery list |
+| **Escape** | Close pattern popup |
 | **Speed slider** | Adjust simulation speed (10-500ms) |
 | **Preset buttons** | Load a preset pattern |
 

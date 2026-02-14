@@ -5,7 +5,7 @@ import copy
 
 from pattern_db import PatternDatabase
 from pattern_scanner import PatternScanner
-from pattern_ui import PatternSidebar, ToastNotification
+from pattern_ui import PatternSidebar, PatternPopup, ToastNotification
 
 # --- Constants ---
 ROWS, COLS = 50, 50
@@ -202,6 +202,7 @@ def main():
     scanner = PatternScanner(pattern_db)
     sidebar = PatternSidebar(GRID_WIDTH, 0, SIDEBAR_WIDTH, STATS_HEIGHT + GRID_HEIGHT)
     toasts = ToastNotification(GRID_WIDTH + 4, STATS_HEIGHT + 10, STATS_HEIGHT + GRID_HEIGHT)
+    popup = None
 
     def do_scan():
         new = scanner.scan(grid, generation)
@@ -326,6 +327,28 @@ def main():
             if event.type == pygame.QUIT:
                 running_app = False
 
+            # Route events to popup first when open
+            if popup is not None:
+                if not popup.handle_event(event):
+                    popup = None
+                continue
+
+            # Sidebar scroll
+            if event.type == pygame.MOUSEWHEEL:
+                mx, my = pygame.mouse.get_pos()
+                if sidebar.rect.collidepoint(mx, my):
+                    sidebar.handle_scroll(event, scanner.discovered)
+
+            # Sidebar click -> open popup
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                if sidebar.rect.collidepoint(event.pos):
+                    clicked = sidebar.handle_click(event.pos, scanner.discovered)
+                    if clicked:
+                        cells = pattern_db.get_cells(clicked)
+                        if cells:
+                            popup = PatternPopup(clicked, cells)
+                        continue
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     running = not running
@@ -342,6 +365,7 @@ def main():
                     running = False
                     btn_start.set_text("Start")
                     scanner.reset()
+                    sidebar.reset()
                 elif event.key == pygame.K_r:
                     grid = make_grid()
                     age_grid = make_age_grid()
@@ -349,6 +373,7 @@ def main():
                     randomize_grid(grid, age_grid)
                     generation = 0
                     scanner.reset()
+                    sidebar.reset()
                     do_scan()
 
             # Mouse drawing on grid (when paused)
@@ -384,6 +409,7 @@ def main():
                     running = False
                     btn_start.set_text("Start")
                     scanner.reset()
+                    sidebar.reset()
                 elif event.ui_element == btn_random:
                     grid = make_grid()
                     age_grid = make_age_grid()
@@ -391,6 +417,7 @@ def main():
                     randomize_grid(grid, age_grid)
                     generation = 0
                     scanner.reset()
+                    sidebar.reset()
                     do_scan()
                 else:
                     for name, btn in preset_buttons.items():
@@ -402,6 +429,7 @@ def main():
                             running = False
                             btn_start.set_text("Start")
                             scanner.reset()
+                            sidebar.reset()
                             do_scan()
                             break
 
@@ -422,6 +450,8 @@ def main():
 
         draw()
         manager.draw_ui(screen)
+        if popup is not None:
+            popup.draw(screen)
         pygame.display.flip()
 
     pygame.quit()

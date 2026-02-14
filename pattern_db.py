@@ -77,6 +77,7 @@ class PatternDatabase:
 
     def __init__(self, patterns_dir="patterns", max_bbox=10):
         self.hash_to_name = {}
+        self.name_to_cells = {}
         self.pattern_count = 0
         self._load(patterns_dir, max_bbox)
 
@@ -98,6 +99,8 @@ class PatternDatabase:
             if h > max_bbox or w > max_bbox:
                 continue
             self.pattern_count += 1
+            if name not in self.name_to_cells:
+                self.name_to_cells[name] = norm
             for orient in all_orientations(norm):
                 key = hash_cells(orient)
                 if key not in self.hash_to_name:
@@ -107,3 +110,7 @@ class PatternDatabase:
         """Look up a normalized cell set. Returns pattern name or None."""
         key = hash_cells(cells_normalized)
         return self.hash_to_name.get(key)
+
+    def get_cells(self, name):
+        """Return the canonical normalized cells for a pattern name, or None."""
+        return self.name_to_cells.get(name)
