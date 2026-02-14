@@ -1,5 +1,7 @@
 """UI components for pattern recognition: sidebar, toast notifications, and pattern popup."""
 
+import webbrowser
+
 import pygame
 
 from pattern_db import bounding_box
@@ -24,6 +26,8 @@ POPUP_BORDER = (80, 160, 255)
 POPUP_TITLE_COLOR = (100, 200, 255)
 POPUP_CELL_COLOR = (57, 255, 20)
 POPUP_CLOSE_COLOR = (200, 200, 200)
+POPUP_LINK_COLOR = (100, 180, 255)
+POPUP_LINK_HOVER = (150, 210, 255)
 
 LINE_HEIGHT = 16
 HEADER_HEIGHT = 28
@@ -144,7 +148,9 @@ class PatternPopup:
     def __init__(self, name, cells):
         self.name = name
         self.cells = cells
+        self.wiki_url = "https://conwaylife.com/wiki/" + name.replace(" ", "_")
         self.font = pygame.font.SysFont("monospace", 15, bold=True)
+        self.link_font = pygame.font.SysFont("monospace", 11)
         self.close_font = pygame.font.SysFont("monospace", 18, bold=True)
 
         h, w = bounding_box(cells)
@@ -163,10 +169,12 @@ class PatternPopup:
         draw_h = self.pattern_h * self.cell_px
         padding = 24
         title_h = 36
+        link_h = 22
         self.popup_w = max(draw_w + padding * 2, 180)
-        self.popup_h = title_h + draw_h + padding * 2
+        self.popup_h = title_h + draw_h + padding * 2 + link_h
         self.popup_rect = None  # set in draw() based on screen size
         self.close_rect = None
+        self.link_rect = None
 
     def draw(self, screen):
         sw, sh = screen.get_size()
@@ -210,11 +218,29 @@ class PatternPopup:
             )
             pygame.draw.rect(screen, POPUP_CELL_COLOR, rect)
 
+        # Wiki link
+        mx, my = pygame.mouse.get_pos()
+        link_text = "View on LifeWiki"
+        hovering = self.link_rect is not None and self.link_rect.collidepoint(mx, my)
+        color = POPUP_LINK_HOVER if hovering else POPUP_LINK_COLOR
+        link_surf = self.link_font.render(link_text, True, color)
+        link_x = px + (self.popup_w - link_surf.get_width()) // 2
+        link_y = py + self.popup_h - 26
+        screen.blit(link_surf, (link_x, link_y))
+        # Underline
+        pygame.draw.line(screen, color,
+                         (link_x, link_y + link_surf.get_height()),
+                         (link_x + link_surf.get_width(), link_y + link_surf.get_height()))
+        self.link_rect = pygame.Rect(link_x, link_y, link_surf.get_width(), link_surf.get_height() + 2)
+
     def handle_event(self, event):
         """Handle events. Returns True if popup should stay open, False to close."""
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if self.close_rect and self.close_rect.collidepoint(event.pos):
                 return False
+            if self.link_rect and self.link_rect.collidepoint(event.pos):
+                webbrowser.open(self.wiki_url)
+                return True
             if self.popup_rect and not self.popup_rect.collidepoint(event.pos):
                 return False
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
