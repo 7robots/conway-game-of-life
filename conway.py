@@ -2,10 +2,13 @@ import pygame
 import pygame_gui
 import random
 import copy
+from datetime import datetime
 
 from pattern_db import PatternDatabase
 from pattern_scanner import PatternScanner
 from pattern_ui import PatternSidebar, PatternPopup, ToastNotification
+from game_db import GameDatabase
+from run_browser import RunBrowser
 
 # --- Constants ---
 ROWS, COLS = 50, 50
@@ -14,7 +17,7 @@ GRID_WIDTH = COLS * CELL_SIZE
 GRID_HEIGHT = ROWS * CELL_SIZE
 
 STATS_HEIGHT = 36
-CONTROLS_HEIGHT = 100
+CONTROLS_HEIGHT = 82
 SIDEBAR_WIDTH = 200
 WINDOW_WIDTH = GRID_WIDTH + SIDEBAR_WIDTH
 WINDOW_HEIGHT = STATS_HEIGHT + GRID_HEIGHT + CONTROLS_HEIGHT
@@ -197,6 +200,11 @@ def main():
     is_dragging = False
     drag_value = 0
 
+    # Persistence
+    db = GameDatabase()
+    starting_grid_snapshot = None
+    run_browser = None
+
     # Pattern recognition
     pattern_db = PatternDatabase()
     scanner = PatternScanner(pattern_db)
@@ -215,8 +223,9 @@ def main():
     btn_h = 30
     btn_w = 68
     gap = 6
+    group_gap = 16  # wider gap between logical groups
 
-    # Row 1: main controls + speed slider
+    # Row 1: [Start][Step]  [Clear][Random]  [Save][Browse]  [===Speed===]
     x = gap
     btn_start = pygame_gui.elements.UIButton(
         relative_rect=pygame.Rect(x, ctrl_y, btn_w, btn_h),
@@ -227,7 +236,7 @@ def main():
         relative_rect=pygame.Rect(x, ctrl_y, btn_w, btn_h),
         text="Step", manager=manager,
     )
-    x += btn_w + gap
+    x += btn_w + group_gap
     btn_clear = pygame_gui.elements.UIButton(
         relative_rect=pygame.Rect(x, ctrl_y, btn_w, btn_h),
         text="Clear", manager=manager,
@@ -237,12 +246,22 @@ def main():
         relative_rect=pygame.Rect(x, ctrl_y, btn_w, btn_h),
         text="Random", manager=manager,
     )
-    x += btn_w + gap + 10
+    x += btn_w + group_gap
+    btn_save = pygame_gui.elements.UIButton(
+        relative_rect=pygame.Rect(x, ctrl_y, 80, btn_h),
+        text="Save Run", manager=manager,
+    )
+    x += 80 + gap
+    btn_browse = pygame_gui.elements.UIButton(
+        relative_rect=pygame.Rect(x, ctrl_y, 72, btn_h),
+        text="Browse", manager=manager,
+    )
+    x += 72 + group_gap
 
-    # Speed slider
+    # Speed slider fills remaining width
     slider_w = WINDOW_WIDTH - x - gap
-    if slider_w < 80:
-        slider_w = 80
+    if slider_w < 60:
+        slider_w = 60
     speed_slider = pygame_gui.elements.UIHorizontalSlider(
         relative_rect=pygame.Rect(x, ctrl_y, slider_w, btn_h),
         start_value=speed_ms,
@@ -333,6 +352,11 @@ def main():
                     popup = None
                 continue
 
+            # Route events to run browser when open
+            if run_browser is not None and run_browser.open:
+                run_browser.handle_event(event)
+                continue
+
             # Sidebar scroll
             if event.type == pygame.MOUSEWHEEL:
                 mx, my = pygame.mouse.get_pos()
@@ -354,6 +378,8 @@ def main():
                     running = not running
                     btn_start.set_text("Pause" if running else "Start")
                 elif event.key == pygame.K_n:
+                    if generation == 0 and starting_grid_snapshot is None:
+                        starting_grid_snapshot = copy.deepcopy(grid)
                     grid, age_grid = next_generation(grid, age_grid, trail_grid)
                     generation += 1
                     do_scan()
@@ -366,6 +392,7 @@ def main():
                     btn_start.set_text("Start")
                     scanner.reset()
                     sidebar.reset()
+                    starting_grid_snapshot = None
                 elif event.key == pygame.K_r:
                     grid = make_grid()
                     age_grid = make_age_grid()
@@ -374,6 +401,7 @@ def main():
                     generation = 0
                     scanner.reset()
                     sidebar.reset()
+                    starting_grid_snapshot = None
                     do_scan()
 
             # Mouse drawing on grid (when paused)
@@ -398,6 +426,8 @@ def main():
                     running = not running
                     btn_start.set_text("Pause" if running else "Start")
                 elif event.ui_element == btn_step:
+                    if generation == 0 and starting_grid_snapshot is None:
+                        starting_grid_snapshot = copy.deepcopy(grid)
                     grid, age_grid = next_generation(grid, age_grid, trail_grid)
                     generation += 1
                     do_scan()
@@ -410,6 +440,7 @@ def main():
                     btn_start.set_text("Start")
                     scanner.reset()
                     sidebar.reset()
+                    starting_grid_snapshot = None
                 elif event.ui_element == btn_random:
                     grid = make_grid()
                     age_grid = make_age_grid()
@@ -418,7 +449,22 @@ def main():
                     generation = 0
                     scanner.reset()
                     sidebar.reset()
+                    starting_grid_snapshot = None
                     do_scan()
+                elif event.ui_element == btn_save:
+                    if starting_grid_snapshot is not None:
+                        db.save_run(
+                            name=f"Run {datetime.now():%Y-%m-%d %H:%M}",
+                            starting_grid=starting_grid_snapshot,
+                            discovered_patterns=scanner.discovered,
+                            final_generation=generation,
+                            speed_ms=speed_ms,
+                        )
+                        toasts.add("Run saved!", pygame.time.get_ticks())
+                    else:
+                        toasts.add("Nothing to save", pygame.time.get_ticks())
+                elif event.ui_element == btn_browse:
+                    run_browser = RunBrowser(WINDOW_WIDTH, WINDOW_HEIGHT, db)
                 else:
                     for name, btn in preset_buttons.items():
                         if event.ui_element == btn:
@@ -430,6 +476,7 @@ def main():
                             btn_start.set_text("Start")
                             scanner.reset()
                             sidebar.reset()
+                            starting_grid_snapshot = None
                             do_scan()
                             break
 
@@ -439,10 +486,37 @@ def main():
 
             manager.process_events(event)
 
+        # Check for run browser requests
+        if run_browser is not None:
+            load_id = run_browser.get_load_request()
+            if load_id is not None:
+                run_data = db.load_run(load_id)
+                if run_data:
+                    grid = run_data["starting_grid"]
+                    age_grid = make_age_grid()
+                    trail_grid = make_trail_grid()
+                    generation = 0
+                    running = False
+                    btn_start.set_text("Start")
+                    scanner.reset()
+                    sidebar.reset()
+                    starting_grid_snapshot = copy.deepcopy(grid)
+                    do_scan()
+                    toasts.add("Run loaded!", pygame.time.get_ticks())
+            clicked_pat = run_browser.get_pattern_click()
+            if clicked_pat:
+                cells = pattern_db.get_cells(clicked_pat)
+                if cells:
+                    popup = PatternPopup(clicked_pat, cells)
+            if not run_browser.open:
+                run_browser = None
+
         manager.update(dt)
 
         # Simulation step
         if running and now - last_step_time >= speed_ms:
+            if generation == 0 and starting_grid_snapshot is None:
+                starting_grid_snapshot = copy.deepcopy(grid)
             grid, age_grid = next_generation(grid, age_grid, trail_grid)
             generation += 1
             last_step_time = now
@@ -450,10 +524,13 @@ def main():
 
         draw()
         manager.draw_ui(screen)
+        if run_browser is not None:
+            run_browser.draw(screen)
         if popup is not None:
             popup.draw(screen)
         pygame.display.flip()
 
+    db.close()
     pygame.quit()
 
 

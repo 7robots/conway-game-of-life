@@ -16,6 +16,9 @@ A visual implementation of Conway's Game of Life built with Pygame, featuring ag
 - **Scrollable discovery sidebar** -- right panel tracks unique pattern types found during a session, with mouse wheel scrolling and a scrollbar when the list overflows
 - **Pattern detail popup** -- click any discovered pattern name to see a centered overlay visualizing its cell layout
 - **Toast notifications** -- brief popups when a new pattern type is first discovered
+- **Run persistence** -- save game runs (starting grid + discovered patterns) to a local SQLite database, browse and reload past runs for deterministic replay
+- **Cumulative pattern stats** -- tracks all-time pattern discovery frequency across runs, with scrollable and clickable stat list in the run browser
+- **XDG-compliant storage** -- game data stored at `~/.local/share/conway-game-of-life/game_data.db`
 
 ## Getting Started
 
@@ -45,9 +48,11 @@ This will install dependencies and launch the game. You can also run manually wi
 | **Click / Drag** | Toggle cells (when paused) |
 | **Click pattern name** | Open pattern detail popup |
 | **Scroll wheel** (sidebar) | Scroll discovery list |
-| **Escape** | Close pattern popup |
+| **Escape** | Close pattern popup / run browser |
 | **Speed slider** | Adjust simulation speed (10-500ms) |
 | **Preset buttons** | Load a preset pattern |
+| **Save Run** | Save current run to database |
+| **Browse** | Open run browser to view/load/delete saved runs |
 
 ## How Pattern Recognition Works
 
@@ -64,6 +69,8 @@ conway.py          -- Main application, grid logic, UI, game loop
 pattern_db.py      -- .cells file parser, orientation hashing, PatternDatabase class
 pattern_scanner.py -- BFS flood fill, connected component extraction, hash lookup
 pattern_ui.py      -- Discovery sidebar and toast notification rendering
+game_db.py         -- SQLite persistence for runs and pattern statistics
+run_browser.py     -- Modal overlay for browsing/loading saved runs
 patterns/          -- 3,557 .cells + 4,968 .rle files from conwaylife.com
 ```
 
