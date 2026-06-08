@@ -85,6 +85,7 @@ def count_neighbors(grid, r, c):
 def next_generation(grid, age_grid, trail_grid):
     new = make_grid()
     new_age = make_age_grid()
+    new_trail = make_trail_grid()
     for r in range(ROWS):
         for c in range(COLS):
             n = count_neighbors(grid, r, c)
@@ -94,15 +95,17 @@ def next_generation(grid, age_grid, trail_grid):
                 if alive:
                     new_age[r][c] = min(age_grid[r][c] + 1, MAX_AGE)
                 else:
-                    trail_grid[r][c] = TRAIL_LENGTH  # start fade
+                    new_trail[r][c] = TRAIL_LENGTH  # start fade
             else:
                 born = n == 3
                 new[r][c] = 1 if born else 0
                 new_age[r][c] = 0
                 # Decay trails for dead cells
                 if not born and trail_grid[r][c] > 0:
-                    trail_grid[r][c] -= 1
-    return new, new_age
+                    new_trail[r][c] = trail_grid[r][c] - 1
+                else:
+                    new_trail[r][c] = trail_grid[r][c]
+    return new, new_age, new_trail
 
 
 def population(grid):
@@ -211,6 +214,19 @@ def main():
     sidebar = PatternSidebar(GRID_WIDTH, 0, SIDEBAR_WIDTH, STATS_HEIGHT + GRID_HEIGHT)
     toasts = ToastNotification(GRID_WIDTH + 4, STATS_HEIGHT + 10, STATS_HEIGHT + GRID_HEIGHT)
     popup = None
+
+    def reset_state(new_grid=None):
+        """Reset all game state. If new_grid is provided, use it; otherwise start empty."""
+        nonlocal grid, age_grid, trail_grid, generation, running, starting_grid_snapshot
+        grid = new_grid if new_grid is not None else make_grid()
+        age_grid = make_age_grid()
+        trail_grid = make_trail_grid()
+        generation = 0
+        running = False
+        btn_start.set_text("Start")
+        scanner.reset()
+        sidebar.reset()
+        starting_grid_snapshot = None
 
     def do_scan():
         new = scanner.scan(grid, generation)
@@ -380,28 +396,14 @@ def main():
                 elif event.key == pygame.K_n:
                     if generation == 0 and starting_grid_snapshot is None:
                         starting_grid_snapshot = copy.deepcopy(grid)
-                    grid, age_grid = next_generation(grid, age_grid, trail_grid)
+                    grid, age_grid, trail_grid = next_generation(grid, age_grid, trail_grid)
                     generation += 1
                     do_scan()
                 elif event.key == pygame.K_c:
-                    grid = make_grid()
-                    age_grid = make_age_grid()
-                    trail_grid = make_trail_grid()
-                    generation = 0
-                    running = False
-                    btn_start.set_text("Start")
-                    scanner.reset()
-                    sidebar.reset()
-                    starting_grid_snapshot = None
+                    reset_state()
                 elif event.key == pygame.K_r:
-                    grid = make_grid()
-                    age_grid = make_age_grid()
-                    trail_grid = make_trail_grid()
+                    reset_state()
                     randomize_grid(grid, age_grid)
-                    generation = 0
-                    scanner.reset()
-                    sidebar.reset()
-                    starting_grid_snapshot = None
                     do_scan()
 
             # Mouse drawing on grid (when paused)
@@ -428,28 +430,14 @@ def main():
                 elif event.ui_element == btn_step:
                     if generation == 0 and starting_grid_snapshot is None:
                         starting_grid_snapshot = copy.deepcopy(grid)
-                    grid, age_grid = next_generation(grid, age_grid, trail_grid)
+                    grid, age_grid, trail_grid = next_generation(grid, age_grid, trail_grid)
                     generation += 1
                     do_scan()
                 elif event.ui_element == btn_clear:
-                    grid = make_grid()
-                    age_grid = make_age_grid()
-                    trail_grid = make_trail_grid()
-                    generation = 0
-                    running = False
-                    btn_start.set_text("Start")
-                    scanner.reset()
-                    sidebar.reset()
-                    starting_grid_snapshot = None
+                    reset_state()
                 elif event.ui_element == btn_random:
-                    grid = make_grid()
-                    age_grid = make_age_grid()
-                    trail_grid = make_trail_grid()
+                    reset_state()
                     randomize_grid(grid, age_grid)
-                    generation = 0
-                    scanner.reset()
-                    sidebar.reset()
-                    starting_grid_snapshot = None
                     do_scan()
                 elif event.ui_element == btn_save:
                     if starting_grid_snapshot is not None:
@@ -468,15 +456,7 @@ def main():
                 else:
                     for name, btn in preset_buttons.items():
                         if event.ui_element == btn:
-                            grid = load_preset(name)
-                            age_grid = make_age_grid()
-                            trail_grid = make_trail_grid()
-                            generation = 0
-                            running = False
-                            btn_start.set_text("Start")
-                            scanner.reset()
-                            sidebar.reset()
-                            starting_grid_snapshot = None
+                            reset_state(load_preset(name))
                             do_scan()
                             break
 
@@ -492,17 +472,14 @@ def main():
             if load_id is not None:
                 run_data = db.load_run(load_id)
                 if run_data:
-                    grid = run_data["starting_grid"]
-                    age_grid = make_age_grid()
-                    trail_grid = make_trail_grid()
-                    generation = 0
-                    running = False
-                    btn_start.set_text("Start")
-                    scanner.reset()
-                    sidebar.reset()
-                    starting_grid_snapshot = copy.deepcopy(grid)
-                    do_scan()
-                    toasts.add("Run loaded!", pygame.time.get_ticks())
+                    loaded_grid = run_data["starting_grid"]
+                    if len(loaded_grid) != ROWS or any(len(row) != COLS for row in loaded_grid):
+                        toasts.add("Grid size mismatch!", pygame.time.get_ticks())
+                    else:
+                        reset_state(loaded_grid)
+                        starting_grid_snapshot = copy.deepcopy(grid)
+                        do_scan()
+                        toasts.add("Run loaded!", pygame.time.get_ticks())
             clicked_pat = run_browser.get_pattern_click()
             if clicked_pat:
                 cells = pattern_db.get_cells(clicked_pat)
@@ -517,7 +494,7 @@ def main():
         if running and now - last_step_time >= speed_ms:
             if generation == 0 and starting_grid_snapshot is None:
                 starting_grid_snapshot = copy.deepcopy(grid)
-            grid, age_grid = next_generation(grid, age_grid, trail_grid)
+            grid, age_grid, trail_grid = next_generation(grid, age_grid, trail_grid)
             generation += 1
             last_step_time = now
             do_scan()

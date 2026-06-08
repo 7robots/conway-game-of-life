@@ -64,6 +64,7 @@ class RunBrowser:
         self._close_rect = None
         self._item_rects = []  # list of (idx, Rect) for run list
         self._stat_item_rects = []  # list of (pattern_name, Rect) for stats
+        self._overlay_cache = None  # cached (sw, sh, surface)
 
         self.refresh()
 
@@ -174,6 +175,15 @@ class RunBrowser:
 
         return self.panel_rect.collidepoint(*pygame.mouse.get_pos())
 
+    def _get_overlay(self, sw, sh):
+        """Return a cached overlay surface, recreating only if screen size changed."""
+        if self._overlay_cache and self._overlay_cache[0] == sw and self._overlay_cache[1] == sh:
+            return self._overlay_cache[2]
+        overlay = pygame.Surface((sw, sh), pygame.SRCALPHA)
+        overlay.fill(OVERLAY_COLOR)
+        self._overlay_cache = (sw, sh, overlay)
+        return overlay
+
     def draw(self, screen):
         if not self.open:
             return
@@ -181,9 +191,7 @@ class RunBrowser:
         sw, sh = screen.get_size()
 
         # Overlay
-        overlay = pygame.Surface((sw, sh), pygame.SRCALPHA)
-        overlay.fill(OVERLAY_COLOR)
-        screen.blit(overlay, (0, 0))
+        screen.blit(self._get_overlay(sw, sh), (0, 0))
 
         # Panel background
         pygame.draw.rect(screen, PANEL_BG, self.panel_rect, border_radius=8)

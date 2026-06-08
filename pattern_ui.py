@@ -175,14 +175,22 @@ class PatternPopup:
         self.popup_rect = None  # set in draw() based on screen size
         self.close_rect = None
         self.link_rect = None
+        self._overlay_cache = None  # cached (sw, sh, surface)
+
+    def _get_overlay(self, sw, sh):
+        """Return a cached overlay surface, recreating only if screen size changed."""
+        if self._overlay_cache and self._overlay_cache[0] == sw and self._overlay_cache[1] == sh:
+            return self._overlay_cache[2]
+        overlay = pygame.Surface((sw, sh), pygame.SRCALPHA)
+        overlay.fill(POPUP_OVERLAY)
+        self._overlay_cache = (sw, sh, overlay)
+        return overlay
 
     def draw(self, screen):
         sw, sh = screen.get_size()
 
         # Overlay
-        overlay = pygame.Surface((sw, sh), pygame.SRCALPHA)
-        overlay.fill(POPUP_OVERLAY)
-        screen.blit(overlay, (0, 0))
+        screen.blit(self._get_overlay(sw, sh), (0, 0))
 
         # Center popup
         px = (sw - self.popup_w) // 2

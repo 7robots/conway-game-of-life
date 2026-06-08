@@ -1,7 +1,10 @@
 """Pattern database: loads .cells files and builds a hash-based lookup table."""
 
 import hashlib
+import logging
 import os
+
+logger = logging.getLogger(__name__)
 
 
 def parse_cells_file(path):
@@ -105,6 +108,11 @@ class PatternDatabase:
                 key = hash_cells(orient)
                 if key not in self.hash_to_name:
                     self.hash_to_name[key] = name
+                elif self.hash_to_name[key] != name:
+                    logger.warning(
+                        "Hash collision: %s and %s share hash %s",
+                        self.hash_to_name[key], name, key,
+                    )
 
     def lookup(self, cells_normalized):
         """Look up a normalized cell set. Returns pattern name or None."""
